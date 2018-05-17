@@ -2,13 +2,22 @@
 
 Negamax is a nim library for executing the Negamax AI algorithm on a turn-based game. The library uses the `turn_based_game` nimble library as the framework for the game itself.
 
-The Negamax algorithm searches and weighs possible future moves. It a varation of the minimax algorithm that is optimized for games where the "value" of a game's state for one player is directly inverse of the value to the oppossing player. It also is able to prune the search tree by tracking boundary conditions.
+The Negamax algorithm searches and weighs possible future moves. It is a varation of the minimax algorithm that is optimized for games where the "value" of a game's state for one player is directly inverse of the value to the oppossing player. This is known as a zero-sum game. An advantage to one player is always and exact disadvantage to the other player.
 
-As such, it has the following restrictions:
+This algorithm is desgined to do _alpha/beta pruning_, which shortens the search tree.
+
+This algorithem is currently recursive in nature. The author is currently working on a non-recursive one as well.
+
+Specifically, negamax has the following restrictions:
 
 1. It only works for two-player games.
 2. It does not work with games that involve any randomness.
-3. It requires that the value of the board be equal but opposite for the opposing player. So, for example, if the "value of being kinged" in a game of checkers is +20.0, then the opponent must value the opposing king at exactly -20.0.
+3. It requires that the value of the board be zero-sum in nature.
+
+Algorithm details:
+
+* https://en.wikipedia.org/wiki/Negamax
+* https://en.wikipedia.org/wiki/Minimax
 
 # Usage
 
@@ -19,13 +28,13 @@ The bulk of the work is in making the game itself. See the _turn_based_game_ lib
 
 Once made, simply import the negamax library and use a `NegamaxPlayer` instead of a normal `Player`. Include the `depth` of the search as an object parameter. The depth is measured in **plies**. One **ply** is a single turn. So, a round of play between two players is two plies.
 
-The Negamax AI specifically requires that the:
+The Negamax AI specifically requires that the
 
-* `scoring`
-* `get_state`
+* `scoring`,
+* `get_state`, and
 * `restore_state`
 
-methods be defined for the game. Again, see the _turn_based_game_ docs for details.
+methods be defined. Again, see the _turn_based_game_ docs for details.
 
 # Simple Example
 
