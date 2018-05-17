@@ -12,12 +12,12 @@ As such, it has the following restrictions:
 
 # Usage
 
-The bulk of the work is in making the game itself. See the turn_based_game library for details.
+The bulk of the work is in making the game itself. See the _turn_based_game_ library for details.
 
-  turn_based_game (repo): https://github.com/JohnAD/turn_based_game
-  turn_based_game (docs): https://github.com/JohnAD/turn_based_game/wiki
+* turn_based_game (repo): <https://github.com/JohnAD/turn_based_game>
+* turn_based_game (docs): <https://github.com/JohnAD/turn_based_game/wiki>
 
-Once made, simply import the negamax library and use a NegamaxPlayer instead of a normal Player. Include the "depth" of the search as an object parameter. The depth is measured in **plies**. One **ply** is a single turn. So, a round of play between two players is two plies.
+Once made, simply import the negamax library and use a `NegamaxPlayer` instead of a normal `Player`. Include the `depth` of the search as an object parameter. The depth is measured in **plies**. One **ply** is a single turn. So, a round of play between two players is two plies.
 
 The Negamax AI specifically requires that the:
 
@@ -33,7 +33,6 @@ methods be defined for the game. Again, see the _turn_based_game_ docs for detai
 import strutils
 import turn_based_game
 import negamax
-import tables
 
 #
 #  Game of Knights
@@ -180,6 +179,11 @@ method scoring*(self: Knights): float =
     return 1000.0
   if self.winner_player_number != 0: # tie or opp won
     return -1000.0
+  #
+  # now set the score based by multiplying 100.0 by the number of moves you
+  # can currently choose from. In theory, that game be as many as seven.
+  # (The place you just jumped from is never available.)
+  #
   var poss_moves: seq[string] = @[]
   self.set_possible_moves(poss_moves)
   var my_move_score = float(len(poss_moves)) * 100.0
