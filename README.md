@@ -26,7 +26,7 @@ The bulk of the work is in making the game itself. See the _turn_based_game_ lib
 * turn_based_game (repo): <https://github.com/JohnAD/turn_based_game>
 * turn_based_game (docs): <https://github.com/JohnAD/turn_based_game/wiki>
 
-Once made, simply import the negamax library and use a `NegamaxPlayer` instead of a normal `Player`. Include the `depth` of the search as an object parameter. The depth is measured in **plies**. One **ply** is a single turn. So, a round of play between two players is two plies.
+Once made, simply import the negamax library and use a `NegamaxPlayer` instead of a normal `Player`. Include the `depth` of the search as an object parameter. The depth is measured in **plies**. One **ply** is a single play. So, one full round of play between two players is two plies.
 
 The Negamax AI specifically requires that the
 

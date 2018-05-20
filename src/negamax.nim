@@ -3,9 +3,6 @@ import tables
 import turn_based_game
 
 
-let INF = 999999.9
-let NEGINF = -999999.9
-
 proc negamax_core(game: var Game, ai_choice: var string, depth: int, orig_depth: int, alpha_in: float, beta_in: float): float =
 
   var
@@ -36,7 +33,7 @@ proc negamax_core(game: var Game, ai_choice: var string, depth: int, orig_depth:
   # set up defaults/fall-throughs
   #
   var best_move = possible_moves[0]
-  var best_value = NEGINF
+  var best_value = -INF
 
   for move in possible_moves:
 
@@ -81,7 +78,7 @@ proc negamax*(game: var Game, depth: int): string =
     ai_choice: string
     possible_moves: seq[string] = @[]
 
-  alpha = NEGINF
+  alpha = -INF
   beta = INF
 
 
@@ -107,8 +104,6 @@ type
   NegamaxPlayer* = ref object of Player
     depth*: int
 
-
-# TODO: verify that default depth=0 works-ish
 #
 method get_move*(self: NegamaxPlayer, game: Game): string = 
   var new_game: Game

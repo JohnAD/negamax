@@ -1,6 +1,6 @@
 import turn_based_game
 import knights
-import "../src/negamax"
+import negamax
 import strutils
 
 const
