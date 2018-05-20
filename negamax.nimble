@@ -9,4 +9,4 @@ srcDir        = "src"
 # Dependencies
 
 requires "nim >= 0.18.0"
-requires "turnbasedgame >= 1.0.0"
+requires "turn_based_game >= 1.0.0"

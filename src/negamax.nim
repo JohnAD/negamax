@@ -6,12 +6,7 @@ import turn_based_game
 let INF = 999999.9
 let NEGINF = -999999.9
 
-# NOTES: negamax _requires_ set_possible_moves of type seq
-
 proc negamax_core(game: var Game, ai_choice: var string, depth: int, orig_depth: int, alpha_in: float, beta_in: float): float =
-
-  let
-    alpha_orig = alpha_in
 
   var
     possible_moves: seq[string] = @[]
@@ -41,23 +36,13 @@ proc negamax_core(game: var Game, ai_choice: var string, depth: int, orig_depth:
   # set up defaults/fall-throughs
   #
   var best_move = possible_moves[0]
-  if depth == orig_depth:
-    ai_choice = best_move
   var best_value = NEGINF
 
   for move in possible_moves:
 
     # simulate the next move
     #
-    # echo "1>", game.status()
-    # echo "1:", game.current_player_number
-    game.restore_state(starting_state) # reset the game each time
-    # echo "TRY MOVE " & $move
-    # echo "2>", game.status()
-    # echo "2:", game.current_player_number
     discard game.make_move(move)
-    # echo "3>", game.status()
-    # echo "2:", game.current_player_number
     game.finish_turn()
 
     # get the negative value result
@@ -70,6 +55,8 @@ proc negamax_core(game: var Game, ai_choice: var string, depth: int, orig_depth:
       -beta,
       -alpha
     )
+
+    game.restore_state(starting_state) # restore the game each time
 
     # evaluate
     #
@@ -92,9 +79,17 @@ proc negamax*(game: var Game, depth: int): string =
     alpha: float
     beta: float
     ai_choice: string
+    possible_moves: seq[string] = @[]
 
-  alpha = INF
-  beta = NEGINF
+  alpha = NEGINF
+  beta = INF
+
+
+  # set the starting default
+  game.set_possible_moves(possible_moves)
+  if len(possible_moves) == 0:
+    return nil
+  ai_choice = possible_moves[0]
 
   alpha = negamax_core(
     game,
@@ -122,68 +117,3 @@ method get_move*(self: NegamaxPlayer, game: Game): string =
   return choice
 
 
-# def negamax(game, depth, origDepth, scoring, alpha=+inf, beta=-inf,
-#              tt=None):
-#     """
-#     This implements Negamax with transposition tables.
-#     This method is not meant to be used directly. See ``easyAI.Negamax``
-#     for an example of practical use.
-#     This function is implemented (almost) acccording to
-#     http://en.wikipedia.org/wiki/Negamax
-#     """
-    
-#     alphaOrig = alpha
-        
-        
-#     if (depth == 0) or game.is_over():
-#         score = scoring(game)
-#         if score == 0:
-#             return score
-#         else:
-#             return  (score - 0.01*depth*abs(score)/score)
-    
-    
-#     possible_moves = game.possible_moves()
-
-    
-    
-#     state = game
-#     best_move = possible_moves[0]
-#     if depth == origDepth:
-#         state.ai_move = possible_moves[0]
-        
-#     bestValue = -inf
-    
-    
-#     for move in possible_moves:
-        
-#         game = state.copy() # re-initialize move
-        
-#         game.make_move(move)
-#         game.switch_player()
-        
-#         move_alpha = - negamax(game, depth-1, origDepth, scoring,
-#                                -beta, -alpha, tt)
-                
-#         # bestValue = max( bestValue,  move_alpha )
-#         if bestValue < move_alpha:
-#             bestValue = move_alpha
-#             best_move = move
-
-#         if  alpha < move_alpha :
-#                 alpha = move_alpha
-#                 # best_move = move
-#                 if depth == origDepth:
-#                     state.ai_move = move
-#                 if (alpha >= beta):
-#                     break
-
-#     if tt != None:
-        
-#         assert best_move in possible_moves
-#         tt.store(game=state, depth=depth, value = bestValue,
-#                  move= best_move,
-#                  flag = UPPERBOUND if (bestValue <= alphaOrig) else (
-#                         LOWERBOUND if (bestValue >= beta) else EXACT))
-
-#     return bestValue
