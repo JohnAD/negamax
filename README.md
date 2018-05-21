@@ -2,13 +2,13 @@
 
 Negamax is a nim library for executing the Negamax AI algorithm on a turn-based game. The library uses the `turn_based_game` nimble library as the framework for the game itself.
 
-The Negamax algorithm searches and weighs possible future moves. It is a varation of the minimax algorithm that is optimized for games where the "value" of a game's state for one player is directly inverse of the value to the oppossing player. This is known as a zero-sum game. An advantage to one player is always and exact disadvantage to the other player.
+The negamax algorithm searches and weighs possible future moves. It is a varation of the minimax algorithm that is optimized for games where the "value" of a game's state for one player is directly inverse of the value to the oppossing player. This is known as a [zero-sum game](https://en.wikipedia.org/wiki/Zero-sum_game).
 
 This algorithm is desgined to do _alpha/beta pruning_, which shortens the search tree.
 
-This algorithem is currently recursive in nature. The author is currently working on a non-recursive one as well.
+This algorithem is currently recursive. The author is currently working on a non-recursive one as well.
 
-Specifically, negamax has the following restrictions:
+Negamax has the following restrictions:
 
 1. It only works for two-player games.
 2. It does not work with games that involve any randomness.
@@ -38,7 +38,7 @@ methods be defined. Again, see the _turn_based_game_ docs for details.
 
 # Simple Example
 
-```
+```nim
 import strutils
 import turn_based_game
 import negamax
