@@ -11,7 +11,7 @@
 
 import strutils
 import turn_based_game
-import "../src/negamax"
+import negamax
 import tables
 
 
