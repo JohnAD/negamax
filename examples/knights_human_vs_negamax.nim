@@ -1,10 +1,20 @@
 import turn_based_game
-import knights
 import negamax
-import strutils
 
-const
-  TAB: string = "   "
+import knights
+
+#
+#  Game of Knights
+#
+# Knights is played on a 5 row by 5 column chessboard with standard Knight pieces. Just like
+# in chess, the Knight move by jumping in an L pattern: moving one space in any direction followed by
+# moving two spaces at a right angle to the first move. When a knight makes a jump, the place that it
+# formerly occupied is marked with an X and it can no longer be landed on by either player. As the
+# game progresses, there are fewer and fewer places to land. There are no captures in this game.
+#
+# To start, each player has one Knight placed in an opposite corner. The players then take turns jumping.
+# The last player to still have a place to move is the winner.
+#
 
 var game = Knights()
 
@@ -14,28 +24,7 @@ game.setup(@[
 ])
 
 var history: seq[string] = @[]
-var move: string = ""
 
-while not game.is_over():
-  if game.current_player_number == 2:
-    echo ""
-    echo "AI (Negamax) is thinking..."
-  move = game.current_player().get_move(game)
-  if move.isNil:
-    break
-  history.add(move)
-  echo ""
-  echo TAB & game.make_move(move)
-  game.determine_winner()
-  game.finish_turn()
+history = game.play()
 
-echo ""
-echo "GAME OVER"
-if game.winner_player_number == STALEMATE:
-  echo TAB & "result: stalemate!"
-elif game.winner_player_number == 0:
-  echo TAB & "result: no winner yet."
-else:
-  echo TAB & "result: winner is $#".format(game.winning_player.name)
-echo ""
-echo TAB & "history: " & $history
+echo "history: " & $history
