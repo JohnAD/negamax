@@ -73,6 +73,13 @@ echo "history: " & $history
 
 For the content pulled by "import knights", see https://github.com/JohnAD/negamax/blob/master/examples/knights.nim
 
+# Videos
+
+The following two videos (to be watched in sequence), demonstrate how to use this library and the 'turn_based_game' library:
+
+* Using "turn_based_game": https://www.youtube.com/watch?v=u6w8vT-oBjE
+* Using "negamax": https://www.youtube.com/watch?v=op4Mcgszshk
+
 # Credit
 
 The code for this engine mimics that written in Python at the EasyAI library located at <https://github.com/Zulko/easyAI>. That library contains both the game rule engine (called TwoPlayerGame) as well as a variety of AI algorithms to play as game players, such as Negamax.

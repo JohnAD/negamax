@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.0.1"
+version       = "0.0.2"
 author        = "John Dupuy"
 description   = "Negamax AI algorithm for turn based games"
 license       = "MIT"

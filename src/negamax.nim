@@ -104,10 +104,14 @@ type
   NegamaxPlayer* = ref object of Player
     depth*: int
 
+
 #
 method get_move*(self: NegamaxPlayer, game: Game): string = 
   var new_game: Game
-  deepCopy(new_game, game)
+  when defined(js):
+    new_game = game
+  else:
+    deepCopy(new_game, game)
   var choice = negamax(new_game, self.depth)
   return choice
 
