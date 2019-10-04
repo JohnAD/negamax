@@ -85,7 +85,7 @@ proc negamax*(game: var Game, depth: int): string =
   # set the starting default
   game.set_possible_moves(possible_moves)
   if len(possible_moves) == 0:
-    return nil
+    return ""
   ai_choice = possible_moves[0]
 
   alpha = negamax_core(
