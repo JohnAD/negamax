@@ -8,7 +8,7 @@
 ## to the oppossing player. This is known as a
 ## [zero-sum game](https://en.wikipedia.org/wiki/Zero-sum_game).
 ## 
-## This algorithm is desgined to do _alpha/beta pruning_, which shortens the 
+## This algorithm is desgined to do *alpha/beta pruning*, which shortens the 
 ## search tree.
 ## 
 ## This algorithem is currently recursive. The author is currently working on 
@@ -17,7 +17,8 @@
 ## Negamax has the following restrictions:
 ## 
 ## 1. It only works for two-player games.
-## 2. It does not work with games that involve any randomness.
+## 2. It does not work with games that involve any randomness during game play.
+##    (Initial randomness for "board setup" etc. before game play begins is just fine.)
 ## 3. It requires that the value of the board be zero-sum in nature.
 ## 
 ## Algorithm details:
@@ -28,7 +29,7 @@
 ## Usage
 ## ==========
 ## 
-## The bulk of the work is in making the game itself. See the _turn_based_game_ 
+## The bulk of the work is in making the game itself. See the ``turn_based_game``
 ## library for details.
 ## 
 ## * turn_based_game (repo): <https://github.com/JohnAD/turn_based_game>
@@ -44,7 +45,7 @@
 ## * ``get_state``, and
 ## * ``restore_state``
 ## 
-## methods be defined. Again, see the _turn_based_game_ docs for details.
+## methods be defined. Again, see the ``turn_based_game`` docs for details.
 ## 
 ## Simple Example
 ## ===============
@@ -179,8 +180,8 @@ proc negamax*(game: var Game, depth: int): string =
   ## to look ahead.
   ##
   ## returns a string ``move`` from the ``game``'s list of 
-  ## available possible moves. If the game is over, it will
-  ## likely return an empty string.
+  ## available possible moves. If there are not moves possible, it will
+  ## return an empty string.
 
 
   var

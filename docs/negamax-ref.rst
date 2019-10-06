@@ -20,7 +20,7 @@ NegamaxPlayer
           depth*: int
 
 
-    source line: `215 <../src/negamax.nim#L215>`__
+    source line: `216 <../src/negamax.nim#L216>`__
 
     this is the AI player to be used with the ``turn_based_game`` library
 
@@ -41,7 +41,7 @@ get_move
 
         method get_move*(self: NegamaxPlayer, game: Game): string =
 
-    source line: `220 <../src/negamax.nim#L220>`__
+    source line: `221 <../src/negamax.nim#L221>`__
 
     Get the chosen move from the algorithm in the context of a
     ``turn_based_game`` library ``Game``.
@@ -55,7 +55,7 @@ negamax
 
         proc negamax*(game: var Game, depth: int): string =
 
-    source line: `175 <../src/negamax.nim#L175>`__
+    source line: `176 <../src/negamax.nim#L176>`__
 
     This is the main negamax algorithm.
     
@@ -63,8 +63,8 @@ negamax
     to look ahead.
     
     returns a string ``move`` from the ``game``'s list of
-    available possible moves. If the game is over, it will
-    likely return an empty string.
+    available possible moves. If there are not moves possible, it will
+    return an empty string.
 
 
 
