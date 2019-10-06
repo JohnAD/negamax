@@ -1,0 +1,11 @@
+{
+  "name": "negamax",
+  "purpose": "library",
+  "repo_host_readme_url": "https://github.com/JohnAD/negamax",
+  "repo_host_docs_url": "https://github.com/JohnAD/negamax/blob/master/docs/",
+  "doc_dir": "docs/",
+  "rst_dir": "rst/",
+  "doc_src_dir": "",
+  "nimble_file": "negamax.nimble",
+  "files_to_ignore": []
+}

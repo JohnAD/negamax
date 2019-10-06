@@ -1,0 +1,7 @@
+Usage	negamax.html#usage	 Usage	
+Simple Example	negamax.html#simple-example	 Simple Example	
+Videos	negamax.html#videos	 Videos	
+Credit	negamax.html#credit	 Credit	
+negamax	negamax.html#negamax,Game,int	negamax: negamax(game: var Game; depth: int): string	
+NegamaxPlayer	negamax.html#NegamaxPlayer	negamax: NegamaxPlayer	
+get_move	negamax.html#get_move.e,NegamaxPlayer,Game	negamax: get_move(self: NegamaxPlayer; game: Game): string	

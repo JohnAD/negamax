@@ -1,7 +1,6 @@
 import turn_based_game
 import knights
-import "../src/negamax"
-import strutils
+import negamax
 
 const
   K1_correct = @["B2", "C4", "D6", "E4", "F6", "G4", "H6", "F5", "G7", "H5", "G3", "H1", "F2", "G0", "H2", "F1", "E3", "D5", "C7", "B5", "C3", "A2", "B0", "D1", "F0", "G2", "H4"]
@@ -22,7 +21,7 @@ var move_list_K2: seq[string] = @[]
 
 while not game.is_over():
   move = game.current_player().get_move(game)
-  if move.isNil():
+  if move=="":
     break
   if game.current_player_number == 1:
     move_list_K1.add(move)
